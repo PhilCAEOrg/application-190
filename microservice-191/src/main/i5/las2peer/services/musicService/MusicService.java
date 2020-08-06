@@ -81,9 +81,9 @@ public class MusicService extends RESTService {
 
   @Api
   @SwaggerDefinition(
-      info = @Info(title = "191", version = "",
-          description = "",
-          termsOfService = "",
+      info = @Info(title = "191", version = "$Metadata_Version$",
+          description = "$Metadata_Description$",
+          termsOfService = "$Metadata_Terms$",
           contact = @Contact(name = "", email = "CAEAddress@gmail.com") ,
           license = @License(name = "BSD",
               url = "https://github.com/PhilCAEOrg/microservice-191/blob/master/LICENSE.txt") ) )
@@ -113,26 +113,26 @@ public class MusicService extends RESTService {
   public Response getSongs() {
 
 
-   Connection connection;
 
-try {
-    connection = dbm.getConnection();
-    
-    PreparedStatement statement = connection.prepareStatement("SELECT * FROM songs;");
-    ResultSet result = statement.executeQuery();
 
-    JSONArray a = new JSONArray();
-    while(result.next()) {
-        JSONObject songJson = new JSONObject();
-        songJson.put("title", result.getString("title"));
-        songJson.put("artist", result.getString("artist"));
-        a.add(songJson);
+     
+    // service method invocations
+
+     
+
+
+
+
+    // response
+    boolean response_condition = true;
+    if(response_condition) {
+      JSONObject result = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_OK).entity(result.toJSONString()).build();
     }
-    statement.close();
-    return Response.ok(a.toJSONString()).build();
-} catch (SQLException e) {
-    return Response.serverError().build();
-}
+    return null;
   }
 
 
